@@ -11,11 +11,11 @@
         <div class="col-md-9">
             <ul>
                 <li>
-                    <img src="http://lorempixel.com/500/250/people/5/" alt="" /></li>
+                    <img src="http://lorempixel.com/500/250/abstract/8/" alt="" /></li>
                 <li>
-                    <img src="http://lorempixel.com/500/250/people/5/" alt="" /></li>
+                    <img src="http://lorempixel.com/500/250/abstract/8/" alt="" /></li>
                 <li>
-                    <img src="http://lorempixel.com/500/250/people/5/" alt="" /></li>
+                    <img src="http://lorempixel.com/500/250/abstract/8/" alt="" /></li>
             </ul>
         </div>
     </div>
