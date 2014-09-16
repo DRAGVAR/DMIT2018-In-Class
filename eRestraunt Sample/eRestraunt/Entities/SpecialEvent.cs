@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace eRestraunt.Entities
 {
     #region SpecialEvent
-    class SpecialEvent
+    public class SpecialEvent
     {
         [Key]
         public string EventCode { get; set; }

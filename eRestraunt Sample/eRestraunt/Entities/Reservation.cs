@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace eRestraunt.Entities
 {
     #region Reservation
-    class Reservation
+    public class Reservation
     {
         public int ReservationID { get; set; }
         public string CustomerName { get; set; }
