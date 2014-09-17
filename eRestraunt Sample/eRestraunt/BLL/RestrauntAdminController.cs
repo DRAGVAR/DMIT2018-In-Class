@@ -48,12 +48,18 @@ namespace eRestraunt.BLL
         #region Query
         public List<Waiter> ListAllWaiters()
         {
-            throw new NotImplementedException();
+            using (RestrauntContext context = new RestrauntContext())
+            {
+                return context.Waiters.ToList();
+            }
         }
 
         public Waiter GetWaiter(int waiterID)
         {
-            throw new NotImplementedException();
+            using (RestrauntContext context = new RestrauntContext())
+            {
+                return context.Waiters.Find(waiterID);
+            }
         }
         #endregion
         #endregion
