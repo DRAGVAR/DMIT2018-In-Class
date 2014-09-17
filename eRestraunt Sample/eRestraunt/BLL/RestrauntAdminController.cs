@@ -1,4 +1,5 @@
-﻿using eRestraunt.Entities;
+﻿using eRestraunt.DAL;
+using eRestraunt.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,35 @@ namespace eRestraunt.BLL
         #region Command
         public int AddWaiter(Waiter item)
         {
-            throw new NotImplementedException();
+            using (RestrauntContext context = new RestrauntContext())
+            {
+                // TODO: Validation of waiter data...
+                var added = context.Waiters.Add(item);
+                context.SaveChanges();
+                return added.WaiterID;
+            }
         }
 
         public void UpdateWaiter(Waiter item) 
         {
+            using (RestrauntContext context = new RestrauntContext())
+            {
+                // TODO: Validation
+                var attatched = context.Waiters.Attach(item);
+                var matchingWithExistingValues = context.Entry<Waiter>(attatched);
+                matchingWithExistingValues.State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
         public void DeleteWaiter(Waiter item)
         {
+            using (RestrauntContext context = new RestrauntContext())
+            {
+                var existing = context.Waiters.Find(item.WaiterID);
+                context.Waiters.Remove(existing);
+                context.SaveChanges();
+            }
         }
         #endregion
         #region Query
