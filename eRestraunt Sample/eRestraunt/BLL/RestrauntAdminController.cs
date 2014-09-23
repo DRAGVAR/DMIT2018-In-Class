@@ -122,11 +122,11 @@ namespace eRestraunt.BLL
             }
         }
 
-        public Table GetTable(int tableID)
+        public Table GetTable(int TableID)
         {
             using (RestrauntContext context = new RestrauntContext())
             {
-                return context.Tables.Find(tableID);
+                return context.Tables.Find(TableID);
             }
         }
         #endregion
