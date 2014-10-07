@@ -14,7 +14,7 @@ namespace eRestraunt.Entities
         public DateTime ReservationDate { get; set; }
         public int NumberInParty { get; set; }
         public string ContactPhone { get; set; }
-        public bool ReservationStatus { get; set; }
+        public string ReservationStatus { get; set; }
         public string EventCode { get; set; }
 
         #region Navigation Properties

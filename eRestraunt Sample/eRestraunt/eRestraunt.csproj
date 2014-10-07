@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\MenuController.cs" />
+    <Compile Include="BLL\ReservationController.cs" />
     <Compile Include="BLL\RestrauntAdminController.cs" />
     <Compile Include="DAL\RestrauntContext.cs" />
     <Compile Include="Entities\Bill.cs" />
