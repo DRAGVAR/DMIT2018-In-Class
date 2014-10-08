@@ -14,16 +14,15 @@
     <asp:Button ID="ListReservations" runat="server" Text="View Reservations" />
 
     <h2>Reservations:</h2>
-    <asp:GridView ID="GridView1" runat="server"
-        DataSourceID="ListForReservations" AutoGenerateColumns="False">
+    <asp:GridView ID="GridView1" runat="server" DataSourceID="ListForReservations" AutoGenerateColumns="False">
         <Columns>
-            <asp:BoundField DataField="ReservationID" HeaderText="ReservationID" SortExpression="ReservationID" />
-            <asp:BoundField DataField="CustomerName" HeaderText="CustomerName" SortExpression="CustomerName" />
-            <asp:BoundField DataField="ReservationDate" HeaderText="ReservationDate" SortExpression="ReservationDate" />
-            <asp:BoundField DataField="NumberInParty" HeaderText="NumberInParty" SortExpression="NumberInParty" />
-            <asp:BoundField DataField="ContactPhone" HeaderText="ContactPhone" SortExpression="ContactPhone" />
-            <asp:CheckBoxField DataField="ReservationStatus" HeaderText="ReservationStatus" SortExpression="ReservationStatus" />
-            <asp:BoundField DataField="EventCode" HeaderText="EventCode" SortExpression="EventCode" />
+            <asp:BoundField DataField="ReservationID" HeaderText="ReservationID" SortExpression="ReservationID"></asp:BoundField>
+            <asp:BoundField DataField="CustomerName" HeaderText="CustomerName" SortExpression="CustomerName"></asp:BoundField>
+            <asp:BoundField DataField="ReservationDate" HeaderText="ReservationDate" SortExpression="ReservationDate"></asp:BoundField>
+            <asp:BoundField DataField="NumberInParty" HeaderText="NumberInParty" SortExpression="NumberInParty"></asp:BoundField>
+            <asp:BoundField DataField="ContactPhone" HeaderText="ContactPhone" SortExpression="ContactPhone"></asp:BoundField>
+            <asp:BoundField DataField="ReservationStatus" HeaderText="ReservationStatus" SortExpression="ReservationStatus"></asp:BoundField>
+            <asp:BoundField DataField="EventCode" HeaderText="EventCode" SortExpression="EventCode"></asp:BoundField>
         </Columns>
     </asp:GridView>
 

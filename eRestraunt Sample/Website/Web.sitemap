@@ -3,6 +3,24 @@
   <siteMapNode title="eRestaurant"  description="eRestaurant">
     <siteMapNode url="~/Default.aspx" title="Home"  description="eRestaurant - Simple-Tasty-Elegant" />
     <siteMapNode url="~/MenuItems.aspx" title="Our Menu" description="eRestraunt Menu Items" />
+    
+    <siteMapNode title="Products"  description="eSchoolWeb Products" >
+      <siteMapNode url="~/Products/Hardware.aspx" title="Hardware" description="eSchoolWeb Hardware" />
+      <siteMapNode url="~/Products/Software.aspx" title="Software" description="eSchoolWeb Software" />
+    </siteMapNode>
+
+    <siteMapNode title="Services"  description="eSchoolWeb Services" >
+      <siteMapNode url="~/Services/Training.aspx" title="Training" description="eSchoolWeb Training" />
+      <siteMapNode url="~/Services/Consulting.aspx" title="Consulting" description="eSchoolWeb Consulting" />
+      <siteMapNode title="Support"  description="eSchoolWeb Support" >
+        <siteMapNode url="~/Services/Support/SupportTickets.aspx" title="Support Tickets" description="eSchoolWeb Support Tickets" />
+      </siteMapNode>
+      <siteMapNode title="Member Services"  description="eSchoolWeb Member Services" >
+        <siteMapNode url="~/Services/MemberServices/Downloads.aspx" title="Downloads" description="eSchoolWeb Downloads" />
+        <siteMapNode url="~/Services/MemberServices/RegisteredProducts.aspx" title="Registered Products" description="eSchoolWeb Registered Products" />
+      </siteMapNode>
+    </siteMapNode>
+    
     <siteMapNode url="~/Reservations.aspx" title="Reservations"  description="Reservations" />
     <siteMapNode title="Staff"  description="Front Desk, Waiters, and Kitchen Staff" >
       <siteMapNode url="~/Staff/KitchenOrders.aspx" title="Kitchen Orders" description="Kitchen Ordering Queue" />
