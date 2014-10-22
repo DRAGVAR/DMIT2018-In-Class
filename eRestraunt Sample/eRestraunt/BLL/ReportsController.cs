@@ -30,5 +30,24 @@ namespace eRestraunt.BLL
                 return results.ToList();
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<CategorizedItemSales> TotalCategorizedItemSales()
+        {
+            using(var context = new RestrauntContext())
+            {
+                var results = from info in context.BillItems
+                              orderby info.Item.Category.Description, info.Item.Description
+                              select new CategorizedItemSales()
+                              {
+                                  CategoryDescription = info.Item.Category.Description,
+                                  ItemDescription = info.Item.Description,
+                                  Quantity = info.Quantity,
+                                  Price = info.SalePrice * info.Quantity,
+                                  Cost = info.UnitCost * info.Quantity
+                              };
+                return results.ToList();
+            }
+        }
     }
 }
