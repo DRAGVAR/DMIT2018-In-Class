@@ -16,8 +16,8 @@ var results = from info in BillItems
                     CategoryDescription = info.Item.MenuCategory.Description,
                     ItemDescription = info.Item.Description,
                     Quantity = info.Quantity,
-                    Price = info.SalePrice,
-                    Cost = info.UnitCost
+                    Price = info.SalePrice * info.Quantity,
+                    Cost = info.UnitCost * info.Quantity
               };
 results.Count().Dump(); // <<The total number of rows being displayed
 results.Dump();
