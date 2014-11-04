@@ -20,6 +20,7 @@ namespace eRestraunt.Entities
 
         #region Navigation Properties
         public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
         #endregion
     }
     #endregion
