@@ -10,6 +10,10 @@
             display: inline-block;
             vertical-align: top;
         }
+        .inline-div
+        {
+            display: inline;
+        }
     </style>
     <div class="row col-md-12">
         <h1>Front Desk</h1>
@@ -124,7 +128,10 @@
                                     <asp:Label ID="ReservationNameLabel" runat="server"
                                         Text='<%# "&mdash; " + Item.ReservationName %>'
                                         Visible='<%# !string.IsNullOrEmpty(Item.ReservationName) %>' />
-                                    -- TODO: BILL$
+                                    <asp:Panel ID="BillInfo" runat="server" CssClass="inline-div"
+                                        Visible="<%# Item.BillTotal.HasValue && Item.BillTotal.Value > 0 %>">
+                                        <asp:Label ID="Label1" runat="server" Text='<%# string.Format(" &ndash; {0:C}", Item.BillTotal) %>' />
+                                    </asp:Panel>
                                 </asp:Panel>
                             </ItemTemplate>
                         </asp:TemplateField>
