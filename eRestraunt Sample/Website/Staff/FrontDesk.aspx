@@ -91,11 +91,19 @@
                 <summary>Tables</summary>
                 <asp:GridView ID="SeatingGridView" runat="server"
                     CssClass="table table-hover table-striped table-condensed"
+                    OnSelectedIndexChanging="SeatingGridView_SelectedIndexChanging"
                     ItemType="eRestraunt.Entities.DTOs.SeatingSummary" AutoGenerateColumns="False" DataSourceID="SeatingDataSource">
                     <Columns>
                         <asp:CheckBoxField DataField="Taken" HeaderText="Taken" SortExpression="Taken"
                             ItemStyle-HorizontalAlign="Center"></asp:CheckBoxField>
-                        <asp:BoundField DataField="Table" HeaderText="Table" SortExpression="Table"></asp:BoundField>
+
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Label ID="TableNumber" runat="server" Text="<%# Item.Table %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <%--<asp:BoundField DataField="Table" HeaderText="Table" SortExpression="Table"></asp:BoundField>--%>
+
                         <asp:BoundField DataField="Seating" HeaderText="Seating" SortExpression="Seating"></asp:BoundField>
 
                         <asp:TemplateField>
@@ -111,9 +119,10 @@
                                     <span class="input-group-addon">
                                         <asp:DropDownList ID="WaiterList" runat="server"
                                             CssClass="selectpicker"
-                                            AppendDataBoundItems="true">
+                                            AppendDataBoundItems="true" DataSourceID="WaiterDataSource" DataTextField="FullName" DataValueField="WaiterID">
                                             <asp:ListItem Value="0">[select a waiter motherfucker]</asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource runat="server" ID="WaiterDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAllWaiters" TypeName="eRestraunt.BLL.RestrauntAdminController"></asp:ObjectDataSource>
                                     </span>
                                     <span class="input-group-addon"
                                         style="width:5px; padding:0; border:0; background-color:white;"></span>
