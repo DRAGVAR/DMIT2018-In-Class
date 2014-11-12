@@ -3,15 +3,14 @@
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="my" TagName="MessageUserControl" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <style type="text/css">
-        .seating
-        {
+        .seating {
             display: inline-block;
             vertical-align: top;
         }
-        .inline-div
-        {
+
+        .inline-div {
             display: inline;
         }
     </style>
@@ -33,7 +32,7 @@
                 <asp:ObjectDataSource runat="server" ID="AdHocBillDateDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="GetLastBillDateTime" TypeName="eRestraunt.BLL.AdHocController"></asp:ObjectDataSource>
             </div>
             <asp:TextBox ID="SearchDate" runat="server" TextMode="Date" Text="2014-10-16" />
-            <asp:TextBox ID="SearchTime" runat="server" TextMode="Time" Text="13:00" CssClass="clockpicker"/>
+            <asp:TextBox ID="SearchTime" runat="server" TextMode="Time" Text="13:00" CssClass="clockpicker" />
             <!-- Additional scripts/styles here -->
             <script src="../Scripts/clockpicker.js"></script>
             <script>
@@ -59,6 +58,7 @@
                             <h4><%# Item.SeatingTime %></h4>
                             <asp:ListView ID="ReservationSummaryListView" runat="server"
                                 ItemType="eRestraunt.Entities.DTOs.ReservationSummary"
+                                OnItemCommand="ReservationSummaryListView_OnItemCommand"
                                 DataSource="<%# Item.Reservations %>">
                                 <LayoutTemplate>
                                     <div class="seating">
@@ -71,13 +71,34 @@
                                         <%# Item.NumberInParty %> &mdash;
                                         <%# Item.Status %> &mdash;
                                         PH:
-                                        <%# Item.Contact %>
+                                        <%# Item.Contact %> &mdash;
+                                        <asp:LinkButton ID="InsertButton" runat="server" CommandName="Seat" CommandArgument='<%# Item.ID %>'>Reservation Seating<span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
                                     </div>
                                 </ItemTemplate>
                             </asp:ListView>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
+                <asp:Panel ID="ReservationSeatingPanel" runat="server" Visible='<%# ShowReservationSeating() %>'>
+                    <asp:DropDownList ID="WaiterDropDownList" runat="server" CssClass="seating"
+                        AppendDataBoundItems="true" DataSourceID="WaitersDataSource"
+                        DataTextField="FullName" DataValueField="WaiterId">
+                        <asp:ListItem Value="0">[select a waiter]</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:ListBox ID="ReservationTableListBox" runat="server" CssClass="seating"
+                        DataSourceID="AvailableSeatingObjectDataSource" SelectionMode="Multiple" Rows="14"
+                        DataTextField="Table" DataValueField="Table"></asp:ListBox>
+                </asp:Panel>
+                <%--For the Waiter DropDown--%>
+                <asp:ObjectDataSource runat="server" ID="WaitersDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAllWaiters" TypeName="eRestraunt.BLL.RestrauntAdminController"></asp:ObjectDataSource>
+
+                <%--For the Available Tables DropDown (seating reservation)--%>
+                <asp:ObjectDataSource runat="server" ID="AvailableSeatingObjectDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="AvailableSeatingByDateTime" TypeName="eRestraunt.BLL.SeatingController">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="SearchDate" PropertyName="Text" Name="date" Type="DateTime"></asp:ControlParameter>
+                        <asp:ControlParameter ControlID="SearchTime" PropertyName="Text" DbType="Time" Name="time"></asp:ControlParameter>
+                    </SelectParameters>
+                </asp:ObjectDataSource>
                 <asp:ObjectDataSource runat="server" ID="ReservationsDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ReservationsByTime" TypeName="eRestraunt.BLL.SeatingController">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="SearchDate" PropertyName="Text" Name="date" Type="DateTime"></asp:ControlParameter>
@@ -120,12 +141,12 @@
                                         <asp:DropDownList ID="WaiterList" runat="server"
                                             CssClass="selectpicker"
                                             AppendDataBoundItems="true" DataSourceID="WaiterDataSource" DataTextField="FullName" DataValueField="WaiterID">
-                                            <asp:ListItem Value="0">[select a waiter motherfucker]</asp:ListItem>
+                                            <asp:ListItem Value="0">[select a waiter]</asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:ObjectDataSource runat="server" ID="WaiterDataSource" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAllWaiters" TypeName="eRestraunt.BLL.RestrauntAdminController"></asp:ObjectDataSource>
                                     </span>
                                     <span class="input-group-addon"
-                                        style="width:5px; padding:0; border:0; background-color:white;"></span>
+                                        style="width: 5px; padding: 0; border: 0; background-color: white;"></span>
                                     <asp:LinkButton ID="Linkbutton1" runat="server" Text="Seat Customers"
                                         CssClass="input-group-btn" CommandName="Select"
                                         CausesValidation="false" />
