@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using eRestraunt.BLL.Security;
+using eRestraunt.Entities.Security;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Linq;
 using System.Web.UI;
